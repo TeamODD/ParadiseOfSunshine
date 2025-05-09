@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73d92ba2ca403a649a8cb7b580b894d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upRange: 10
+  upRange: 1.2
   markerParent: {fileID: 0}
   pageParent: {fileID: 0}
 --- !u!114 &7636957240521097927

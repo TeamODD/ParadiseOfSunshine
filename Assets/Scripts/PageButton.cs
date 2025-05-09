@@ -4,9 +4,10 @@ using UnityEngine.EventSystems;
 
 public class PageButton : MonoBehaviour
 {
-    public float upRange = 0f;
+    public float upRange = 1f;
 
     private Vector3 originalPosition;
+    private Vector3 bigScale;
 
     public Transform markerParent;
 
@@ -14,34 +15,37 @@ public class PageButton : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        originalPosition = transform.localPosition;
+        originalPosition = transform.localScale;
+        bigScale = new Vector3(upRange, upRange, upRange);
 
-        //Transform current = transform;
-        //while(transform != null)
-        //{
-        //    if (transform.name == "MarkerLayout") //버튼 상위 이름
-        //    {
-        //        break;
-        //    }
-        //    current = current.parent;
-        //}
-        //markerParent = current;
+    //Transform current = transform;
+    //while(transform != null)
+    //{
+    //    if (transform.name == "MarkerLayout") //버튼 상위 이름
+    //    {
+    //        break;
+    //    }
+    //    current = current.parent;
+    //}
+    //markerParent = current;
 
-        //current = current.parent;
-        //pageParent = current.Find("PageCanvas"); //페이지 상위 이름
-        //if(pageParent == null)
-        //{
-        //    Debug.Log("pageParent 찾을 수 없음");
-        //}
-        SetPage(0);
+    //current = current.parent;
+    //pageParent = current.Find("PageCanvas"); //페이지 상위 이름
+    //if(pageParent == null)
+    //{
+    //    Debug.Log("pageParent 찾을 수 없음");
+    //}
+    SetPage(0);
     }
     public void OnPointerEnter()
     {
-        transform.localPosition += Vector3.up * upRange;
+        // transform.localPosition += Vector3.up * upRange;
+        transform.localScale = bigScale;
     }
     public void OnPointerExit()
     {
-        transform.localPosition = originalPosition;
+       // transform.localPosition = originalPosition;
+       transform.localScale = originalPosition;
     }
     public void OnPointerClick()
     {
