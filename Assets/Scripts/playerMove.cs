@@ -10,6 +10,8 @@ public class playerMove : MonoBehaviour
 {
     public GameObject mapObject;
     private InputSystem_Actions controls;
+    BoxCollider2D MapCollider;
+    BoxCollider2D BoxCollider2D;
 
     public float speed = 1f;
     public float rangeRest = 2f;
@@ -21,18 +23,17 @@ public class playerMove : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        MapCollider = mapObject.GetComponent<BoxCollider2D>();
+        BoxCollider2D = gameObject.GetComponent<BoxCollider2D>();
         Vector3 mapPos = mapObject.transform.position;
-        Vector3 mapScale = mapObject.transform.localScale;
-        Vector3 size = transform.localScale;
+        Vector3 mapScale = MapCollider.size * 100;
+        Vector3 size = BoxCollider2D.size * 100;
 
-        minBound = new Vector2(mapPos.x - (mapScale.x - size.x * rangeRest) * 0.5f, mapPos.y - (mapScale.y - size.y * rangeRest) * 0.5f);
-        maxBound = new Vector2(mapPos.x + (mapScale.x - size.x * rangeRest) * 0.5f, mapPos.y + (mapScale.y - size.y * rangeRest) * 0.5f);
+        minBound = new Vector2(mapPos.x - (mapScale.x - size.x) * 0.5f, mapPos.y - (mapScale.y - size.y ) * 0.5f);
+        maxBound = new Vector2(mapPos.x + (mapScale.x - size.x) * 0.5f, mapPos.y + (mapScale.y - size.y ) * 0.5f);
     }
     private void Awake()
     {
-        Vector3 mappos = mapObject.transform.position;
-        Vector3 mapscale = mapObject.transform.localScale;
-        Vector3 size = transform.localScale;
         controls = new InputSystem_Actions();
 
         controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
@@ -55,14 +56,14 @@ public class playerMove : MonoBehaviour
     {
         Vector3 move = new Vector3(moveInput.x, moveInput.y, 0);
         transform.Translate(move * Time.deltaTime * speed);
-        InCamera();
+        //InCamera();
     }
     private void LateUpdate()
     {
-        Vector3 pos = transform.position;
-        pos.x = Mathf.Clamp(pos.x, minBound.x, maxBound.x);
-        pos.y = Mathf.Clamp(pos.y, minBound.y, maxBound.y);
-        transform.position = pos;
+       Vector3 pos = transform.position;
+       pos.x = Mathf.Clamp(pos.x, minBound.x, maxBound.x);
+       pos.y = Mathf.Clamp(pos.y, minBound.y, maxBound.y);
+       transform.position = pos;
     }
     void InCamera()
     {
