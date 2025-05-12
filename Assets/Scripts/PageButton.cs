@@ -35,7 +35,7 @@ public class PageButton : MonoBehaviour
     //{
     //    Debug.Log("pageParent 찾을 수 없음");
     //}
-    SetPage(0);
+        SetPage(0);
     }
     public void OnPointerEnter()
     {
