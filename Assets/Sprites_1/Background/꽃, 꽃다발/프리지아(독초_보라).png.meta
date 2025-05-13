@@ -75,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "\uD504\uB9AC\uC9C0\uC544(\uB3C5\uCD08_\uBCF4\uB77C)_0": 3920637865486385186
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
