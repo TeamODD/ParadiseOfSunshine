@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89e7f1406b189094298f4161085632db, type: 3}
+  m_Name: Carnation
+  m_EditorClassIdentifier: 
+  flowerName: "\uBD89\uC740 \uCE74\uB124\uC774\uC158"
+  index: 4
+  choices:
+  - "A. \uC774 \uAF43\uC758 \uAF43\uB9D0\uC740 \u2018\uC0AC\uB791\u2019, \u2018\uAC10\uC0AC\u2019\uC774\uB2E4."
+  - "B. \uC774 \uAF43\uC740 \uD328\uB7AD\uC774\uACFC\uC5D0 \uC18D\uD55C\uB2E4."
+  - "C. \uD55C\uAD6D\uC5D0\uC11C\uB294 \uC5F0\uB9D0\uC5D0 \uC8FC\uB85C \uC120\uBB3C\uB41C\uB2E4."
+  correctAnswerIndex: 0
+  image: {fileID: 4688254806794232386, guid: b7d0f8ec637169949883aeb032007b23, type: 3}
+  poisonImage: {fileID: 2497597326757948755, guid: eeed7cf3e33852540a742cfb1393dac3, type: 3}

@@ -1,5 +1,5 @@
-using NUnit.Framework.Interfaces;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,9 +7,8 @@ public class QuizUI : MonoBehaviour
 {
     public static QuizUI Instance;
 
-    public Text questionText;
     public List<Button> choiceButtons;
-    public List<Text> choiceTexts;
+    public List<TextMeshProUGUI> choiceTexts;
 
     private FlowerData currentFlowerData;
     private Flower currentFlower;
@@ -31,10 +30,10 @@ public class QuizUI : MonoBehaviour
     {
         
     }
-    public void ShowQuiz(FlowerData data, Flower item)
+    public void ShowQuiz(FlowerData data, Flower flower)
     {
         currentFlowerData = data;
-        currentFlower = item;
+        currentFlower = flower;
 
         for (int i = 0; i < choiceButtons.Count; i++)
         {
@@ -51,15 +50,9 @@ public class QuizUI : MonoBehaviour
 
         if (isCorrect)
         {
-            //InventoryManager.Instance.AddFlower(currentFlowerData);
+            InventoryManager.Instance.AddFlower(currentFlowerData);
             PlayerHappiness.Instance.Heal(5);
         }
-        else
-        {
-            PlayerHappiness.Instance.Damage(5);
-        }
-
-            Destroy(currentFlower.gameObject);
         gameObject.SetActive(false);
     }
 }

@@ -1,26 +1,32 @@
-using System.Xml;
 using UnityEngine;
 
 public class Flower : MonoBehaviour
 {
     public FlowerData data;
+    public bool isPoison = false;
+
+    SpriteRenderer spriteRenderer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (isPoison)
+            spriteRenderer.sprite = data.poisonImage;
+        else 
+            spriteRenderer.sprite = data.image;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+    }
+    private void OnMouseDown()
+    {
         GetFlower();
     }
-    void GetFlower()
+    public void GetFlower()
     {
-        if (Input.GetMouseButton(0))
-        {
-            QuizUI.Instance.ShowQuiz(data, this);
-            Destroy(gameObject);
-        }
+        SelectUI.Instance.ShowSelect(data, this);
     }
 }
