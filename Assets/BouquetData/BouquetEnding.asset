@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6a58e63cb2140459fe82177292a88d, type: 3}
+  m_Name: BouquetEnding
+  m_EditorClassIdentifier: 
+  bouquetName: "\uAF43\uB2E4\uBC1C \uC5D4\uB529"
+  needFlowers:
+  - {fileID: 11400000, guid: d641ec5d1d6a99b48b85a0788367c188, type: 2}
+  - {fileID: 11400000, guid: 046ab94d192fdd240933e77f7d08bf02, type: 2}
+  - {fileID: 11400000, guid: 9c42e306f47db88438080bffe35ddbd6, type: 2}
+  needCounts: 020000000200000001000000
+  emojiIndex: flower_emoji_4
+  image: {fileID: -5109248459372247411, guid: 014fea42f33772a4a81af7113f734608, type: 3}

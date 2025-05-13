@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class SelectUI : MonoBehaviour
 {
-
     public static SelectUI Instance;
 
     private Flower currentFlower;
