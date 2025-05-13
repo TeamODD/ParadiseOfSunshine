@@ -20,7 +20,10 @@ public class PageButton : MonoBehaviour
     }
     void Start()
     {
-        SetPage(0);
+        if (transform.GetSiblingIndex() == 0)
+        {
+            SetPage(0);
+        }
     }
     public void OnPointerEnter()
     {
