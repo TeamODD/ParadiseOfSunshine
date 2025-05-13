@@ -8,9 +8,8 @@ public class Flower : MonoBehaviour
 {
     public FlowerData data;
     public bool isPoison = false;
-    //public List<>
+
     SpriteRenderer spriteRenderer;
-    BoxCollider2D  boxCollider2D;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -32,14 +31,6 @@ public class Flower : MonoBehaviour
     }
     public void GetFlower()
     {
-        if (isPoison)
-        {
-            PlayerHappiness.Instance.Damage(5);
-            Destroy(gameObject);
-        }
-        else
-        {
-            QuizUI.Instance.ShowQuiz(data, this);
-        }
+        SelectUI.Instance.ShowSelect(data, this);
     }
 }

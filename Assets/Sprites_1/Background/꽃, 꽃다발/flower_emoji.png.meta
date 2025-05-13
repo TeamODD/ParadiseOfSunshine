@@ -64,7 +64,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -102,7 +102,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -398,7 +398,17 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      flower_emoji_0: 6372931093773282403
+      flower_emoji_1: 6597450773037180055
+      flower_emoji_2: -6883317868848176995
+      flower_emoji_3: 8274233106766929154
+      flower_emoji_4: 8413913792177016743
+      flower_emoji_5: 8228848733166390504
+      flower_emoji_6: 309254734759243301
+      flower_emoji_7: -949134801737518892
+      flower_emoji_8: -2947025714199458832
+      flower_emoji_9: -3237713307193664478
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -30,10 +30,10 @@ public class QuizUI : MonoBehaviour
     {
         
     }
-    public void ShowQuiz(FlowerData data, Flower item)
+    public void ShowQuiz(FlowerData data, Flower flower)
     {
         currentFlowerData = data;
-        currentFlower = item;
+        currentFlower = flower;
 
         for (int i = 0; i < choiceButtons.Count; i++)
         {
@@ -53,8 +53,6 @@ public class QuizUI : MonoBehaviour
             InventoryManager.Instance.AddFlower(currentFlowerData);
             PlayerHappiness.Instance.Heal(5);
         }
-
-        Destroy(currentFlower.gameObject);
         gameObject.SetActive(false);
     }
 }
