@@ -1,10 +1,4 @@
-using System;
-using Unity.VisualScripting.InputSystem;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Rendering.Universal;
-using static UnityEditor.PlayerSettings;
-using UnityEngine.UIElements;
 
 public class playerMove : MonoBehaviour
 {

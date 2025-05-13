@@ -4,23 +4,27 @@ using UnityEngine;
 public class Flower : MonoBehaviour
 {
     public FlowerData data;
+    SpriteRenderer spriteRenderer;
+    BoxCollider2D  boxCollider2D;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = data.image;
     }
 
     // Update is called once per frame
     void Update()
     {
+
+    }
+    private void OnMouseDown()
+    {
         GetFlower();
     }
-    void GetFlower()
+    public void GetFlower()
     {
-        if (Input.GetMouseButton(0))
-        {
-            QuizUI.Instance.ShowQuiz(data, this);
-            Destroy(gameObject);
-        }
+        QuizUI.Instance.ShowQuiz(data, this);
+        Destroy(gameObject);
     }
 }

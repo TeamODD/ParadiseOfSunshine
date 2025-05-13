@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerHappiness : MonoBehaviour
 {
@@ -6,22 +7,24 @@ public class PlayerHappiness : MonoBehaviour
 
     public int maxHappy = 100;
     public int currentHappy;
+    public Slider happySlider;
 
     void Awake()
     {
         Instance = this;
         currentHappy = 0;
+        happySlider.value = currentHappy;
     }
 
     public void Heal(int amount)
     {
         currentHappy = Mathf.Min(currentHappy + amount, maxHappy);
-        Debug.Log("회복됨! 현재 체력: " + currentHappy);
+        happySlider .value = currentHappy;
     }
 
     public void Damage(int amount)
     {
         currentHappy = Mathf.Max(currentHappy - amount, 0);
-        Debug.Log("피해! 현재 체력: " + currentHappy);
+        happySlider.value = currentHappy;
     }
 }
