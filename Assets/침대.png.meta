@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 99201a7b58d99a04d83d721adc4d84e6
+guid: 7b020efbf735d354a8b7b55582607ccf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5379646874078389332
-    second: pos_room_0
+      213: -6750318277770773909
+    second: "\uCE68\uB300_0"
+  - first:
+      213: -5355829126865556536
+    second: "\uCE68\uB300_1"
+  - first:
+      213: -4441915474673026339
+    second: "\uCE68\uB300_2"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pos_room_0
+      name: "\uCE68\uB300_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1226
-        height: 743
+        x: 55
+        y: 115
+        width: 178
+        height: 166
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +134,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cab548daba7a755b0800000000000000
-      internalID: -5379646874078389332
+      spriteID: b6a75a48a4d0252a0800000000000000
+      internalID: -6750318277770773909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uCE68\uB300_1"
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 87
+        width: 58
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cbec7719c54ca5b0800000000000000
+      internalID: -5355829126865556536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uCE68\uB300_2"
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 71
+        width: 46
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddabdc9f8652b52c0800000000000000
+      internalID: -4441915474673026339
       vertices: []
       indices: 
       edges: []
@@ -147,8 +197,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      pos_room_0: -5379646874078389332
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
