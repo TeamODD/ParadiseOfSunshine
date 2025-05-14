@@ -23,6 +23,8 @@ public class Flower : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        if (QuizUI.Instance.isActive || SelectUI.Instance.isActive)
+            return;
         GetFlower();
     }
     public void GetFlower()

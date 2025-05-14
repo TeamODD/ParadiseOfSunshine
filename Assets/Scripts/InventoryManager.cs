@@ -8,7 +8,14 @@ public class InventoryManager : MonoBehaviour
 
     //꽃 종류
     public List<FlowerData> flowerDatas;
+    public List<BouquetData> bouquetDatas;
     private FlowerData currentFlowerData;
+    private BouquetData currentBouquetData;
+
+    //꽃다발 조건 만족 확인
+    private Dictionary<FlowerData, bool> isEnough = new Dictionary<FlowerData, bool>();
+    private Dictionary<BouquetData, bool> isAble = new Dictionary<BouquetData, bool>();
+    private Dictionary<BouquetData, bool> isGiven = new Dictionary<BouquetData, bool>();
 
     // 꽃별 보유 개수
     private Dictionary<FlowerData, int> flowerCounts = new Dictionary<FlowerData, int>();
@@ -27,10 +34,15 @@ public class InventoryManager : MonoBehaviour
     }
     private void InitInventory()
     {
-        for(int i = 0; i < flowerDatas.Count; i++)
+        foreach (FlowerData data in flowerDatas)
         {
-            currentFlowerData = flowerDatas[i];
-            flowerCounts[currentFlowerData] = 0;
+            flowerCounts[data] = 0;
+            isEnough[data] = false;
+        }
+        foreach(BouquetData data1 in bouquetDatas)
+        {
+            isAble[data1] = false;
+            isGiven[data1] = false;
         }
         UpdateSlot();
     }
@@ -39,12 +51,58 @@ public class InventoryManager : MonoBehaviour
         if (flowerCounts.ContainsKey(flowerData))
         {
             flowerCounts[flowerData]++;
+            ToEnough(flowerData);
+            ToAble();
             UpdateSlot();
         }
         else
         {
-            flowerCounts[flowerData] = 1;
+            flowerCounts[flowerData] = 0;
             UpdateSlot();
+        }
+    }
+    public void subFlower(FlowerData flowerData)
+    {
+        if (flowerCounts.ContainsKey(flowerData))
+        {
+            flowerCounts[flowerData]--;
+            ToEnough(flowerData);
+            ToAble();
+            UpdateSlot();
+        }
+    }
+    private void ToEnough(FlowerData flowerData)
+    {
+        foreach (var bouquet in bouquetDatas)
+        {
+            int needCount;
+            if (bouquet.needFlowers.Contains(flowerData))
+            {
+                needCount = bouquet.needCounts[bouquet.needFlowers.IndexOf(flowerData)];
+                Debug.Log(needCount);
+                if (needCount <= flowerCounts[flowerData])
+                {
+                    isEnough[flowerData] = true;
+                    Debug.Log(flowerData);
+                }
+            }
+        }
+    }
+    private void ToAble()
+    {
+        foreach (var bouquet in bouquetDatas)
+        {
+            foreach (var flower in bouquet.needFlowers)
+            {
+                Debug.Log(flower);
+                if (!isEnough[flower])
+                {
+                    isAble[bouquet] = false;
+                    break;
+                }
+                isAble[bouquet] = true;
+            }
+            Debug.Log(bouquet);
         }
     }
     void UpdateSlot()
@@ -54,29 +112,37 @@ public class InventoryManager : MonoBehaviour
             switch(flower.index)
             {
                 case 0:
-                    flowerBoards[0].text = $"<sprite name=\"flower_emoji_9\">{flowerCounts[flower]}    ";
+                    flowerBoards[0].text = $"<sprite name=\"flower_emoji_{flower.index}\">{flowerCounts[flower]}/2    ";
                     break;
                 case 1:
-                    flowerBoards[0].text += $"<sprite name=\"flower_emoji_7\">{flowerCounts[flower]}";
+                    flowerBoards[0].text += $"<sprite name=\"flower_emoji_{flower.index}\">{flowerCounts[flower]}/2";
                     break;
                 case 2:
-                    flowerBoards[1].text = $"<sprite name=\"flower_emoji_2\">{flowerCounts[flower]}    ";
+                    flowerBoards[1].text = $"<sprite name=\"flower_emoji_{flower.index}\">{flowerCounts[flower]}/2    ";
                     break;
                 case 3:
-                    flowerBoards[1].text += $"<sprite name=\"flower_emoji_3\">{flowerCounts[flower]}";
+                    flowerBoards[1].text += $"<sprite name=\"flower_emoji_{flower.index}\">{flowerCounts[flower]}/2";
                     break;
                 case 4:
-                    flowerBoards[2].text = $"<sprite name=\"flower_emoji_8\">{flowerCounts[flower]}  ";
+                    flowerBoards[2].text = $"<sprite name=\"flower_emoji_{flower.index}\">{flowerCounts[flower]}/2  ";
                     break;
                 case 5:
-                    flowerBoards[2].text += $"<sprite name=\"flower_emoji_2\">{flowerCounts[flower]}  ";
+                    flowerBoards[2].text += $"<sprite name=\"flower_emoji_{flower.index}\">{flowerCounts[flower]}/2  ";
                     break;
                 case 6:
-                    flowerBoards[2].text += $"<sprite name=\"flower_emoji_5\">{flowerCounts[flower]}  ";
+                    flowerBoards[2].text += $"<sprite name=\"flower_emoji_{flower.index}\">{flowerCounts[flower]}/1";
                     break;
                 default:
                     break;
                  
+            }
+        }
+        foreach(var bouquet in bouquetDatas)
+        {
+            if (isAble[bouquet])
+            {
+                TextMeshProUGUI Textchang = flowerBoards[bouquetDatas.IndexOf(bouquet)];
+                Textchang.text = $"<sprite name={bouquet.emojiIndex}>{(isGiven[bouquet] ? " <color=red>V</color>" : "1/1")}";
             }
         }
     }
