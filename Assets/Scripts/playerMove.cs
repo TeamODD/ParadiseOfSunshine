@@ -10,9 +10,12 @@ public class playerMove : MonoBehaviour
     public float speed = 1f;
 
     Vector2 moveInput;
+
+    public bool isTalking;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        isTalking = false;
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -38,6 +41,8 @@ public class playerMove : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (isTalking)
+            return;
         //방향 상하좌우 2143
         if (moveInput.y > 0)
             animator.SetInteger("direction", 2);

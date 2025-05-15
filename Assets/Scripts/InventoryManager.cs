@@ -41,8 +41,8 @@ public class InventoryManager : MonoBehaviour
         }
         foreach(BouquetData data1 in bouquetDatas)
         {
-            isAble[data1] = false;
-            isGiven[data1] = true;
+            isAble[data1] = true;
+            isGiven[data1] = false;
         }
         UpdateSlot();
     }
