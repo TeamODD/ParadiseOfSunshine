@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SelectUI : MonoBehaviour
 {
     public static SelectUI Instance;
+    public bool isActive;
 
     private Flower currentFlower;
     private FlowerData currentFlowerData;
@@ -15,6 +16,7 @@ public class SelectUI : MonoBehaviour
     {
         Instance = this;
         gameObject.SetActive(false);
+        isActive = false;
 
         buttons[0].onClick.AddListener(() => OnGetSelected(true, currentFlowerData, currentFlower));
         buttons[1].onClick.AddListener(() => OnGetSelected(false, currentFlowerData, currentFlower));
@@ -27,6 +29,7 @@ public class SelectUI : MonoBehaviour
     }
     public void ShowSelect(FlowerData data, Flower flower)
     {
+        isActive = true;
         currentFlowerData = data;
         currentFlower = flower;
 
@@ -43,19 +46,15 @@ public class SelectUI : MonoBehaviour
             if (flower.isPoison)
             {
                 PlayerHappiness.Instance.Damage(5);
-                gameObject.SetActive(false);
             }
             else
             {
                 QuizUI.Instance.ShowQuiz(flowerData, flower);
-                gameObject.SetActive(false);
             }
         }
-        else if(!isGet)
-        {
-            gameObject.SetActive(false);
-            
-        }
+        gameObject.SetActive(false);
+        isActive = false;
+        flowerSpawner.Instance.NotifyNull(currentFlower.transform.parent);
         Destroy(currentFlower.gameObject);
     }
 }

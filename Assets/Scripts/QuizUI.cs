@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class QuizUI : MonoBehaviour
 {
     public static QuizUI Instance;
+    public bool isActive;
 
     public List<Button> choiceButtons;
     public List<TextMeshProUGUI> choiceTexts;
@@ -17,6 +18,7 @@ public class QuizUI : MonoBehaviour
     {
         Instance =this;
         gameObject.SetActive(false);
+        isActive = false;
 
         for (int i = 0; i < choiceButtons.Count; i++)
         {
@@ -24,7 +26,6 @@ public class QuizUI : MonoBehaviour
             choiceButtons[i].onClick.AddListener(() => OnAnswerSelected(index));
         }
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -32,6 +33,7 @@ public class QuizUI : MonoBehaviour
     }
     public void ShowQuiz(FlowerData data, Flower flower)
     {
+        isActive = true;
         currentFlowerData = data;
         currentFlower = flower;
 
@@ -54,5 +56,6 @@ public class QuizUI : MonoBehaviour
             PlayerHappiness.Instance.Heal(5);
         }
         gameObject.SetActive(false);
+        isActive=false;
     }
 }
