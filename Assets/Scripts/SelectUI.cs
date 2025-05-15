@@ -54,6 +54,7 @@ public class SelectUI : MonoBehaviour
         }
         gameObject.SetActive(false);
         isActive = false;
+        flowerSpawner.Instance.NotifyNull(currentFlower.transform.parent);
         Destroy(currentFlower.gameObject);
     }
 }

@@ -14,8 +14,8 @@ public class InventoryManager : MonoBehaviour
 
     //꽃다발 조건 만족 확인
     private Dictionary<FlowerData, bool> isEnough = new Dictionary<FlowerData, bool>();
-    private Dictionary<BouquetData, bool> isAble = new Dictionary<BouquetData, bool>();
-    private Dictionary<BouquetData, bool> isGiven = new Dictionary<BouquetData, bool>();
+    public Dictionary<BouquetData, bool> isAble = new Dictionary<BouquetData, bool>();
+    public Dictionary<BouquetData, bool> isGiven = new Dictionary<BouquetData, bool>();
 
     // 꽃별 보유 개수
     private Dictionary<FlowerData, int> flowerCounts = new Dictionary<FlowerData, int>();
@@ -42,7 +42,7 @@ public class InventoryManager : MonoBehaviour
         foreach(BouquetData data1 in bouquetDatas)
         {
             isAble[data1] = false;
-            isGiven[data1] = false;
+            isGiven[data1] = true;
         }
         UpdateSlot();
     }
@@ -71,6 +71,11 @@ public class InventoryManager : MonoBehaviour
             UpdateSlot();
         }
     }
+    public void giveBouquet(BouquetData bouquetData)
+    {
+        isGiven[bouquetData] = true;
+        UpdateSlot();
+    }
     private void ToEnough(FlowerData flowerData)
     {
         foreach (var bouquet in bouquetDatas)
@@ -79,11 +84,9 @@ public class InventoryManager : MonoBehaviour
             if (bouquet.needFlowers.Contains(flowerData))
             {
                 needCount = bouquet.needCounts[bouquet.needFlowers.IndexOf(flowerData)];
-                Debug.Log(needCount);
                 if (needCount <= flowerCounts[flowerData])
                 {
                     isEnough[flowerData] = true;
-                    Debug.Log(flowerData);
                 }
             }
         }
@@ -94,7 +97,6 @@ public class InventoryManager : MonoBehaviour
         {
             foreach (var flower in bouquet.needFlowers)
             {
-                Debug.Log(flower);
                 if (!isEnough[flower])
                 {
                     isAble[bouquet] = false;
@@ -102,7 +104,6 @@ public class InventoryManager : MonoBehaviour
                 }
                 isAble[bouquet] = true;
             }
-            Debug.Log(bouquet);
         }
     }
     void UpdateSlot()
