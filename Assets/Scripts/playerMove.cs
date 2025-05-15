@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class playerMove : MonoBehaviour
 {
+    public static playerMove Instance;
     public GameObject mapObject;
     private InputSystem_Actions controls;
     Rigidbody2D rb;
@@ -21,6 +22,7 @@ public class playerMove : MonoBehaviour
     }
     private void Awake()
     {
+        Instance = this;
         controls = new InputSystem_Actions();
 
         controls.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();

@@ -23,6 +23,7 @@ public class NPCManager : MonoBehaviour
     private bool endScript = false;
     private bool isAbleNext = true;
     private bool isPlaying = false;
+    private bool isTalking = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -51,7 +52,7 @@ public class NPCManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.isTalking)
+        if(player.isTalking && isTalking)
         {
             if(endScript)
             {
@@ -64,6 +65,7 @@ public class NPCManager : MonoBehaviour
                     finished = true;
                     endScript = false;
                     isPlaying = false;
+                    isTalking = false;
                 }
             }
             if(finished)
@@ -72,6 +74,7 @@ public class NPCManager : MonoBehaviour
                 {
                     talkPanel.SetActive(false);
                     player.isTalking = false;
+                    isTalking = false;
                 }
                 else if (Input.GetMouseButtonDown(0) && !isAbleNext)
                 {
@@ -86,10 +89,7 @@ public class NPCManager : MonoBehaviour
                     if (Input.GetMouseButtonDown(0) && isAbleNext)
                     {
                         currentIndex++;
-                    }
-                    else if (Input.GetMouseButtonDown(0) && !isAbleNext)
-                    {
-                        isAbleNext = true;
+                        StartCoroutine(Wait());
                     }
                 }
                 else if (!isPlaying)
@@ -110,6 +110,7 @@ public class NPCManager : MonoBehaviour
                         player.isTalking = false;
                         currentIndex = 0;
                         isPlaying = false;
+                        isTalking = false;
                     }
                 }
             }
@@ -124,7 +125,8 @@ public class NPCManager : MonoBehaviour
         currentIndex = 0;
         talkPanel.SetActive(true);
         player.isTalking = true;
-        isAbleNext = false;
+        StartCoroutine(Wait());
+        isTalking = true;
     }
     private void OnSelected(bool isGive)
     {
@@ -148,6 +150,7 @@ public class NPCManager : MonoBehaviour
             player.isTalking = false;
             playerPanel.SetActive(false);
             currentIndex = 0;
+            isTalking= false;
         }
     }
     private void OnGive(int index)
@@ -165,5 +168,11 @@ public class NPCManager : MonoBehaviour
             text.text = npcData.selectScripts[1];
         endScript = true;
         InventoryManager.Instance.giveBouquet(bouquetDatas[index]);
+    }
+    IEnumerator Wait()
+    {
+        isAbleNext = false;
+        yield return new WaitForSeconds(0.2f);
+        isAbleNext = true;
     }
 }

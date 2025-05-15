@@ -32,6 +32,8 @@ public class Flower : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        if (playerMove.Instance.isTalking)
+            return;
         if (QuizUI.Instance.isActive || SelectUI.Instance.isActive)
             return;
         GetFlower();
