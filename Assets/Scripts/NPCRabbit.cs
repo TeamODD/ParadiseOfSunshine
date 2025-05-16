@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class NPCRabbit : MonoBehaviour
 {
+    Animator animator;
     public GameObject talkPanel;
     public TextMeshProUGUI text;
     public GameObject playerPanel;
@@ -15,7 +16,6 @@ public class NPCRabbit : MonoBehaviour
     public List<int> playerIndex;
     public List<int> stop;
     public GameObject startFlower;
-    public playerMove player;
     public Transform[] waypoints;
     public float speed = 10f;
 
@@ -28,6 +28,7 @@ public class NPCRabbit : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        animator = GetComponent<Animator>();
         talkPanel.SetActive(false);
         playerPanel.SetActive(false);
     }
@@ -35,78 +36,93 @@ public class NPCRabbit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //ÀÌµ¿ Àå¸é
-        if(currentIndex == 4)
+        if(!finished)
         {
-            StopTalk();
-            if (waypoints.Length == 0) return;
-            // ÇöÀç ¸ñÇ¥ ÁöÁ¡±îÁö ÀÌµ¿
-            if ( moveIndex < waypoints.Length)
+            if (currentIndex == 0)
             {
-                Transform target = waypoints[moveIndex];
-                transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-
-                // µµÂøÇÏ¸é ´ÙÀ½ ÁöÁ¡À¸·Î
-                if (Vector3.Distance(transform.position, target.position) < 0.05f)
+                if (Vector3.Distance(transform.position, playerMove.Instance.gameObject.transform.position) < 300f)
+                    StartTalk();
+            }
+            //ÀÌµ¿ Àå¸é
+            if (currentIndex == 5)
+            {
+                StopTalk();
+                if (waypoints.Length == 0) return;
+                // ÇöÀç ¸ñÇ¥ ÁöÁ¡±îÁö ÀÌµ¿
+                if (moveIndex < waypoints.Length)
                 {
-                    moveIndex++;
+                    animator.SetBool("isWalking", true);
+                    Transform target = waypoints[moveIndex];
+                    transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+
+                    // µµÂøÇÏ¸é ´ÙÀ½ ÁöÁ¡À¸·Î
+                    if (Vector3.Distance(transform.position, target.position) < 0.05f)
+                    {
+                        moveIndex++;
+                    }
+                }
+                else if (Vector3.Distance(transform.position, playerMove.Instance.gameObject.transform.position) < 300f)
+                {
+                    StartTalk();
+                }
+                else
+                {
+                    animator.SetBool("isWalking", false);
                 }
             }
-            else if (Vector3.Distance(transform.position, player.gameObject.transform.position) < 300f)
+            //²É È¹µæ Àå¸é
+            if (currentIndex == 10)
             {
-                StartTalk();
-            }
-        }
-        //²É È¹µæ Àå¸é
-        if(currentIndex == 10)
-        {
-            StopTalk();
-            if (SelectUI.Instance.isActive)
-            {
-                StartTalk();
-            }
-        }
-        //²É Ã¬±â±â
-        if (currentIndex == 11)
-        {
-            StopTalk();
-            if(QuizUI.Instance.isActive)
-                StartTalk();
-        }
-        //ÄûÁî
-        if(currentIndex == 13)
-        {
-            StopTalk();
-            if(!(QuizUI.Instance.isActive))
-                StartTalk();
-        }
-        if (currentIndex >= scripts.Count)
-        {
-            finished = true;
-            StopTalk();
-        }
-        if(player.isTalking && !finished && isTalking)
-        {
-            if(currentIndex == playerIndex[nextPlayerTalk] || currentIndex == 1)
-            {
-                talkPanel.SetActive(false);
-                playerPanel.SetActive(true);
-                if(nextPlayerTalk < playerIndex.Count - 1)
-                    nextPlayerTalk++;
-                textPlayer.text = scripts[currentIndex];
-            }
-            else
-            {
-                talkPanel.SetActive(true);
-                playerPanel.SetActive(false);
-                text.text = scripts[currentIndex];
-            }
-            if (Input.GetMouseButton(0) && isAbleNext)
-            {
-                if (currentIndex < scripts.Count)
+                StopTalk();
+                if (SelectUI.Instance.isActive)
                 {
-                    currentIndex++;
-                    StartCoroutine(Wait());
+                    StartTalk();
+                }
+            }
+            //²É Ã¬±â±â
+            if (currentIndex == 12)
+            {
+                StopTalk();
+                if (!(SelectUI.Instance.isActive))
+                {
+                    StartTalk();
+                }
+            }
+            //ÄûÁî
+            if (currentIndex == 14)
+            {
+                StopTalk();
+                if (!(QuizUI.Instance.isActive))
+                    StartTalk();
+            }
+            if (currentIndex >= scripts.Count)
+            {
+                StopTalk();
+                finished = true;
+            }
+            if (playerMove.Instance.isTalking && !finished && isTalking)
+            {
+                if (currentIndex == playerIndex[nextPlayerTalk] || currentIndex == 1)
+                {
+                    talkPanel.SetActive(false);
+                    playerPanel.SetActive(true);
+                    if (nextPlayerTalk < playerIndex.Count - 1)
+                        nextPlayerTalk++;
+                    textPlayer.text = scripts[currentIndex];
+                }
+                else
+                {
+                    talkPanel.SetActive(true);
+                    playerPanel.SetActive(false);
+                    text.text = scripts[currentIndex];
+                }
+                if (Input.GetMouseButtonDown(0) && isAbleNext)
+                {
+                    if (currentIndex < scripts.Count)
+                    {
+                        currentIndex++;
+                        StartCoroutine(Wait());
+                    }
                 }
             }
         }
@@ -115,7 +131,7 @@ public class NPCRabbit : MonoBehaviour
     {
         if (finished)
             return;
-        if (player.isTalking)
+        if (playerMove.Instance.isTalking)
             return;
         StartTalk();
         StartCoroutine(Wait());
@@ -125,19 +141,18 @@ public class NPCRabbit : MonoBehaviour
         isAbleNext = false;
         yield return new WaitForSeconds(0.2f);
         isAbleNext = true;
-        Debug.Log(currentIndex);
     }
     private void StopTalk()
     {
         isTalking = false;
-        player.isTalking = false;
+        playerMove.Instance.isTalking = false;
         talkPanel.SetActive(false);
         playerPanel.SetActive(false);
     }
     private void StartTalk()
     {
         isTalking = true;
-        player.isTalking = true;
+        playerMove.Instance.isTalking = true;
         talkPanel.SetActive(true);
         text.text = scripts[currentIndex];
     }
