@@ -23,11 +23,13 @@ public class InventoryManager : MonoBehaviour
     // UI ½½·Ô ²É + °³¼ö Ç¥½Ã
     public TextMeshProUGUI[] flowerBoards;
 
-
+    new AudioSource audio;
+    public List<AudioClip> audioClips;
     //private Dictionary<FlowerData, GameObject> flowerSlots = new Dictionary<FlowerData, GameObject>();
 
     void Awake()
     {
+        audio = GetComponent<AudioSource>();
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
         InitInventory();
@@ -50,6 +52,8 @@ public class InventoryManager : MonoBehaviour
     {
         if (flowerCounts.ContainsKey(flowerData))
         {
+            audio.clip = audioClips[0];
+            audio.Play();
             flowerCounts[flowerData]++;
             ToEnough(flowerData);
             ToAble();
@@ -109,6 +113,8 @@ public class InventoryManager : MonoBehaviour
                     break;
                 }
                 isAble[bouquet] = true;
+                audio.clip = audioClips[1];
+                audio.Play();
             }
         }
     }

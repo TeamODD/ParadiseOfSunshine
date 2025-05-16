@@ -15,6 +15,7 @@ public class NPCRabbit : MonoBehaviour
     public List<string> scripts;
     public List<int> playerIndex;
     public List<int> stop;
+    public List<GameObject> npcs;
     public GameObject startFlower;
     public Transform[] waypoints;
     public float speed = 10f;
@@ -31,6 +32,10 @@ public class NPCRabbit : MonoBehaviour
         animator = GetComponent<Animator>();
         talkPanel.SetActive(false);
         playerPanel.SetActive(false);
+        foreach (GameObject go in npcs)
+        {
+            go.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -61,13 +66,11 @@ public class NPCRabbit : MonoBehaviour
                         moveIndex++;
                     }
                 }
-                else if (Vector3.Distance(transform.position, playerMove.Instance.gameObject.transform.position) < 300f)
-                {
-                    StartTalk();
-                }
-                else
+                else if(moveIndex >= waypoints.Length)
                 {
                     animator.SetBool("isWalking", false);
+                    if(Vector3.Distance(transform.position, playerMove.Instance.gameObject.transform.position) < 350f)
+                        StartTalk();
                 }
             }
             //²É È¹µæ Àå¸é
@@ -99,6 +102,12 @@ public class NPCRabbit : MonoBehaviour
             {
                 StopTalk();
                 finished = true;
+                playerMove.Instance.isTuto = false;
+                foreach(var npc in npcs)
+                {
+                    npc.SetActive(true);
+                }
+                Debug.Log("Æ©Åä³¡");
             }
             if (playerMove.Instance.isTalking && !finished && isTalking)
             {

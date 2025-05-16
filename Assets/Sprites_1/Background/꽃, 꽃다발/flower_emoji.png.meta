@@ -193,7 +193,7 @@ TextureImporter:
         serializedVersion: 2
         x: 393
         y: 723
-        width: 227
+        width: 210
         height: 235
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -213,9 +213,9 @@ TextureImporter:
       name: flower_emoji_2
       rect:
         serializedVersion: 2
-        x: 743
+        x: 790
         y: 730
-        width: 230
+        width: 130
         height: 240
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -236,9 +236,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1071
-        y: 719
-        width: 230
-        height: 239
+        y: 740
+        width: 229
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,9 +258,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 40
-        y: 360
+        y: 370
         width: 270
-        height: 270
+        height: 260
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,10 +279,10 @@ TextureImporter:
       name: flower_emoji_5
       rect:
         serializedVersion: 2
-        x: 421
+        x: 440
         y: 413
-        width: 184
-        height: 190
+        width: 140
+        height: 187
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -301,10 +301,10 @@ TextureImporter:
       name: flower_emoji_6
       rect:
         serializedVersion: 2
-        x: 761
+        x: 790
         y: 410
-        width: 176
-        height: 180
+        width: 130
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -323,9 +323,9 @@ TextureImporter:
       name: flower_emoji_7
       rect:
         serializedVersion: 2
-        x: 96
+        x: 110
         y: 70
-        width: 154
+        width: 130
         height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -367,9 +367,9 @@ TextureImporter:
       name: flower_emoji_9
       rect:
         serializedVersion: 2
-        x: 777
+        x: 800
         y: 70
-        width: 150
+        width: 110
         height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}

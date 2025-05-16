@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     private bool bookIsOpen;
     private bool mapIsOpen;
     private InputSystem_Actions controls;
+    AudioSource AudioSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,7 +20,7 @@ public class UIManager : MonoBehaviour
     }
     private void Awake()
     {
-
+        AudioSource = GetComponent<AudioSource>();
     }
     //void OnOpenBook(InputValue value)
     //{
@@ -36,6 +37,7 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            AudioSource.Play();
             if(mapIsOpen)
             {
                 mapIsOpen = false;
@@ -49,6 +51,7 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
+            AudioSource.Play();
             if (bookIsOpen)
             {
                 bookIsOpen = false;

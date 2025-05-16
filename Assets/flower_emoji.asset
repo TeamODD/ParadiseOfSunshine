@@ -140,9 +140,9 @@ MonoBehaviour:
       m_HorizontalAdvance: 232
     m_GlyphRect:
       m_X: 1071
-      m_Y: 719
-      m_Width: 230
-      m_Height: 239
+      m_Y: 740
+      m_Width: 229
+      m_Height: 200
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
@@ -155,9 +155,9 @@ MonoBehaviour:
       m_HorizontalBearingY: 121
       m_HorizontalAdvance: 132
     m_GlyphRect:
-      m_X: 743
+      m_X: 790
       m_Y: 730
-      m_Width: 230
+      m_Width: 130
       m_Height: 240
     m_Scale: 1
     m_AtlasIndex: 0
@@ -173,7 +173,7 @@ MonoBehaviour:
     m_GlyphRect:
       m_X: 393
       m_Y: 723
-      m_Width: 227
+      m_Width: 210
       m_Height: 235
     m_Scale: 1
     m_AtlasIndex: 0
@@ -203,10 +203,10 @@ MonoBehaviour:
       m_HorizontalBearingY: 96
       m_HorizontalAdvance: 142
     m_GlyphRect:
-      m_X: 421
+      m_X: 440
       m_Y: 413
-      m_Width: 184
-      m_Height: 190
+      m_Width: 140
+      m_Height: 187
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
@@ -219,10 +219,10 @@ MonoBehaviour:
       m_HorizontalBearingY: 91
       m_HorizontalAdvance: 132
     m_GlyphRect:
-      m_X: 761
+      m_X: 790
       m_Y: 410
-      m_Width: 176
-      m_Height: 180
+      m_Width: 130
+      m_Height: 179
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
@@ -236,9 +236,9 @@ MonoBehaviour:
       m_HorizontalAdvance: 272
     m_GlyphRect:
       m_X: 40
-      m_Y: 360
+      m_Y: 370
       m_Width: 270
-      m_Height: 270
+      m_Height: 260
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
@@ -251,9 +251,9 @@ MonoBehaviour:
       m_HorizontalBearingY: 81
       m_HorizontalAdvance: 132
     m_GlyphRect:
-      m_X: 96
+      m_X: 110
       m_Y: 70
-      m_Width: 154
+      m_Width: 130
       m_Height: 160
     m_Scale: 1
     m_AtlasIndex: 0
@@ -283,9 +283,9 @@ MonoBehaviour:
       m_HorizontalBearingY: 81
       m_HorizontalAdvance: 112
     m_GlyphRect:
-      m_X: 777
+      m_X: 800
       m_Y: 70
-      m_Width: 150
+      m_Width: 110
       m_Height: 160
     m_Scale: 1
     m_AtlasIndex: 0

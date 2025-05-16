@@ -24,10 +24,12 @@ public class NPCManager : MonoBehaviour
     private bool isPlaying = false;
     private bool isTalking = false;
     private bool isStart = false;
+    AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         text.text = npcData.scripts[currentIndex];
         foreach (var button in giveButtons)
         {
@@ -194,6 +196,7 @@ public class NPCManager : MonoBehaviour
             PlayerHappiness.Instance.Heal(10);
             text.text = npcData.selectScripts[1];
         }
+        audioSource.Play();
         endScript = true;
         InventoryManager.Instance.giveBouquet(bouquetDatas[index]);
     }

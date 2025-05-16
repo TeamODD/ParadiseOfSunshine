@@ -29,7 +29,6 @@ public class QuizUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
     public void ShowQuiz(FlowerData data, Flower flower)
     {
