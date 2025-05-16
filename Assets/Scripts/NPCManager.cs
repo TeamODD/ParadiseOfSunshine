@@ -140,8 +140,11 @@ public class NPCManager : MonoBehaviour
         }
         if (isLong)
         {
-            OnSelected(false);
-            isLong = false;
+            if (Input.GetMouseButtonDown(0))
+            {
+                OnSelected(false);
+                isLong = false;
+            }
         }
     }
     private void OnMouseDown()

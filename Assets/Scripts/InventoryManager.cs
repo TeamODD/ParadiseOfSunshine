@@ -43,8 +43,10 @@ public class InventoryManager : MonoBehaviour
     {
         if (isPlaying)
         {
-            DontDestroyOnLoad(PlayerHappiness.Instance);
-            SceneManager.LoadScene("EndScene");
+            if(Input.GetMouseButtonDown(0))
+            {
+                StartCoroutine(PlayEndScene());
+            }
         }
     }
     private void InitInventory()
@@ -56,7 +58,7 @@ public class InventoryManager : MonoBehaviour
         }
         foreach(BouquetData data1 in bouquetDatas)
         {
-            isAble[data1] = false;
+            isAble[data1] = true;
             isGiven[data1] = false;
         }
         UpdateSlot();
@@ -96,7 +98,7 @@ public class InventoryManager : MonoBehaviour
     public void Ending()
     {
         //엔딩 씬 이동, 점수계산
-        StartCoroutine(WaitEnding());
+        isPlaying = true;
         return;
     }
     private void ToEnough(FlowerData flowerData)
@@ -174,9 +176,10 @@ public class InventoryManager : MonoBehaviour
         if (isGiven[bouquetDatas[2]])
             Ending();
     }
-    IEnumerator WaitEnding()
+    IEnumerator PlayEndScene()
     {
-        yield return new WaitForSecondsRealtime(2f);
-        isPlaying = true;
+        yield return new WaitForSeconds(0.5f);
+        DontDestroyOnLoad(PlayerHappiness.Instance);
+        SceneManager.LoadScene("EndScene");
     }
 }
