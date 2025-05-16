@@ -1,7 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -26,6 +28,8 @@ public class InventoryManager : MonoBehaviour
 
     new AudioSource audio;
     public List<AudioClip> audioClips;
+    bool isPlaying = false;
+
     //private Dictionary<FlowerData, GameObject> flowerSlots = new Dictionary<FlowerData, GameObject>();
 
     void Awake()
@@ -34,6 +38,14 @@ public class InventoryManager : MonoBehaviour
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
         InitInventory();
+    }
+    private void Update()
+    {
+        if (isPlaying)
+        {
+            DontDestroyOnLoad(PlayerHappiness.Instance);
+            SceneManager.LoadScene("EndScene");
+        }
     }
     private void InitInventory()
     {
@@ -84,8 +96,7 @@ public class InventoryManager : MonoBehaviour
     public void Ending()
     {
         //엔딩 씬 이동, 점수계산
-        DontDestroyOnLoad(PlayerHappiness.Instance);
-        SceneManager.LoadScene("EndScene");
+        StartCoroutine(WaitEnding());
         return;
     }
     private void ToEnough(FlowerData flowerData)
@@ -162,5 +173,10 @@ public class InventoryManager : MonoBehaviour
         }
         if (isGiven[bouquetDatas[2]])
             Ending();
+    }
+    IEnumerator WaitEnding()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        isPlaying = true;
     }
 }

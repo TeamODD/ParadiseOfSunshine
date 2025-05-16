@@ -30,7 +30,7 @@ public class movenextscene : MonoBehaviour
     public void EndingScene()
     {
         if(PlayerHappiness.Instance != null)
-            text.text += PlayerHappiness.Instance.currentHappy * 100;
+            text.text += PlayerHappiness.Instance.currentHappy;
         panel.SetActive(true);
     }
 }

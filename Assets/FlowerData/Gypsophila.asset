@@ -15,9 +15,9 @@ MonoBehaviour:
   flowerName: "\uD770 \uC548\uAC1C\uAF43"
   index: 5
   choices:
-  - "A. \uC774 \uAF43\uC758 \uAF43\uB9D0\uC740 \u2018\uBD84\uB178\u2019, \u2018\uACF5\uD5C8\uD568\u2019\uC774\uB2E4."
-  - "B. \uC774 \uAF43\uC740 \uC11D\uC8FD\uACFC\uC5D0 \uC18D\uD55C\uB2E4."
-  - "C. \uC774 \uAF43\uC740 \uB9C8\uB974\uBA74 \uC0C9\uC774 \uC605\uC5B4\uC9C4\uB2E4."
+  - "\uC774 \uAF43\uC758 \uAF43\uB9D0\uC740 \u2018\uBD84\uB178\u2019, \u2018\uACF5\uD5C8\uD568\u2019\uC774\uB2E4."
+  - "\uC774 \uAF43\uC740 \uC11D\uC8FD\uACFC\uC5D0 \uC18D\uD55C\uB2E4."
+  - "\uC774 \uAF43\uC740 \uB9C8\uB974\uBA74 \uC0C9\uC774 \uC605\uC5B4\uC9C4\uB2E4."
   correctAnswerIndex: 1
   image: {fileID: 362682734908019218, guid: fbbfda3fc9bebe3448faf03ea082d373, type: 3}
   poisonImage: {fileID: -2765051404243490303, guid: 54f05b86f3d62114f90cb7436ef6ad01, type: 3}

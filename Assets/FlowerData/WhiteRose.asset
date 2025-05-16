@@ -15,9 +15,9 @@ MonoBehaviour:
   flowerName: "\uD770 \uC7A5\uBBF8"
   index: 1
   choices:
-  - "A. \uC774 \uAF43\uC758 \uAF43\uB9D0\uC740 \u2018\uB530\uB73B\uD55C \uD587\uC0B4\u2019\uC774\uB2E4. "
-  - "B. \uC774 \uAF43\uC740 \uAD6D\uD654\uACFC\uC5D0 \uC18D\uD55C\uB2E4."
-  - "C. \uC774 \uAF43\uC740 \uC904\uAE30\uC5D0 \uAC00\uC2DC\uAC00 \uC788\uB2E4."
+  - "\uC774 \uAF43\uC758 \uAF43\uB9D0\uC740 \u2018\uB530\uB73B\uD55C \uD587\uC0B4\u2019\uC774\uB2E4. "
+  - "\uC774 \uAF43\uC740 \uAD6D\uD654\uACFC\uC5D0 \uC18D\uD55C\uB2E4."
+  - "\uC774 \uAF43\uC740 \uC904\uAE30\uC5D0 \uAC00\uC2DC\uAC00 \uC788\uB2E4."
   correctAnswerIndex: 2
   image: {fileID: -9114215117869870454, guid: ecf4751de9c5fd742bd54d4a97e94180, type: 3}
   poisonImage: {fileID: -6275489850165067260, guid: 764d2b674c5a6e046a1c5f096bd6c8f2, type: 3}

@@ -19,6 +19,7 @@ public class NPCManager : MonoBehaviour
     public NPCData npcData;
     public List<BouquetData> bouquetDatas;
     public string NotPrepared;
+    public string MariEx;
     private int currentIndex;
     private bool finished = false;
     private bool endScript = false;
@@ -26,6 +27,7 @@ public class NPCManager : MonoBehaviour
     private bool isPlaying = false;
     private bool isTalking = false;
     private bool isStart = false;
+    private bool isLong = false;
     AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -136,6 +138,11 @@ public class NPCManager : MonoBehaviour
             
 
         }
+        if (isLong)
+        {
+            OnSelected(false);
+            isLong = false;
+        }
     }
     private void OnMouseDown()
     {
@@ -193,7 +200,6 @@ public class NPCManager : MonoBehaviour
                 playerText.gameObject.SetActive(true);
                 playerPanel.SetActive(true);
                 StartCoroutine(Waitlong());
-                OnSelected(false);
                 return;
             }
         }
@@ -212,6 +218,8 @@ public class NPCManager : MonoBehaviour
         audioSource.Play();
         endScript = true;
         InventoryManager.Instance.giveBouquet(bouquetDatas[index]);
+        if (InventoryManager.Instance.isGiven[bouquetDatas[0]] && InventoryManager.Instance.isGiven[bouquetDatas[1]] && index < 2)
+            text.text += MariEx;
     }
     private void RemoveListens()
     {
@@ -232,8 +240,8 @@ public class NPCManager : MonoBehaviour
     }
     IEnumerator Waitlong()
     {
-        isAbleNext = false;
-        yield return new WaitForSeconds(2f);
-        isAbleNext = true;
+        isLong = false;
+        yield return new WaitForSecondsRealtime(2f);
+        isLong = true;
     }
 }

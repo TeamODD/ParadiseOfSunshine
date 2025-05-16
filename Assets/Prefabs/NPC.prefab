@@ -160,6 +160,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6a78e746d43e86140b7c0ef7e6438d27, type: 2}
   - {fileID: 11400000, guid: 5c26566ea30c9fa47a5bdbc6bee6c00b, type: 2}
   NotPrepared: "\uC544\uC9C1 \uC900\uBE44\uAC00 \uC548\uB41C \uAC83 \uAC19\uB2E4..."
+  MariEx: " (\uC18D\uB2E5)\uB9C8\uB9AC\uACE8\uB4DC\uB294 \uC11D\uC0C1 \uADFC\uCC98\uC5D0\uC11C\uB9CC
+    \uD53C\uC5B4\uB09C\uB300..."
 --- !u!82 &2619828305991515618
 AudioSource:
   m_ObjectHideFlags: 0
