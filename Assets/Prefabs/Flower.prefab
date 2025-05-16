@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7548364959243377292}
   - component: {fileID: 6805503964881420788}
   - component: {fileID: 7920452515420679983}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Flower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 60, y: 60, z: 0}
+  m_LocalScale: {x: 60, y: 60, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -147,5 +147,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.1, y: 1.1}
+  m_Size: {x: 1.6, y: 1.6}
   m_EdgeRadius: 0

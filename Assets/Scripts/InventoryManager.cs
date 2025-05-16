@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -23,11 +24,13 @@ public class InventoryManager : MonoBehaviour
     // UI ½½·Ô ²É + °³¼ö Ç¥½Ã
     public TextMeshProUGUI[] flowerBoards;
 
-
+    new AudioSource audio;
+    public List<AudioClip> audioClips;
     //private Dictionary<FlowerData, GameObject> flowerSlots = new Dictionary<FlowerData, GameObject>();
 
     void Awake()
     {
+        audio = GetComponent<AudioSource>();
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
         InitInventory();
@@ -50,6 +53,8 @@ public class InventoryManager : MonoBehaviour
     {
         if (flowerCounts.ContainsKey(flowerData))
         {
+            audio.clip = audioClips[0];
+            audio.Play();
             flowerCounts[flowerData]++;
             ToEnough(flowerData);
             ToAble();
@@ -75,6 +80,13 @@ public class InventoryManager : MonoBehaviour
     {
         isGiven[bouquetData] = true;
         UpdateSlot();
+    }
+    public void Ending()
+    {
+        //¿£µù ¾À ÀÌµ¿, Á¡¼ö°è»ê
+        DontDestroyOnLoad(PlayerHappiness.Instance);
+        SceneManager.LoadScene("EndScene");
+        return;
     }
     private void ToEnough(FlowerData flowerData)
     {
@@ -103,35 +115,37 @@ public class InventoryManager : MonoBehaviour
                     break;
                 }
                 isAble[bouquet] = true;
+                audio.clip = audioClips[1];
+                audio.Play();
             }
         }
     }
     void UpdateSlot()
     {
-        foreach(var flower in flowerDatas)
+        foreach (var flower in flowerDatas)
         {
             switch(flower.index)
             {
                 case 0:
-                    flowerBoards[0].text = $"<sprite name=\"flower_emoji_{flower.index}\">{flowerCounts[flower]}/2    ";
+                    flowerBoards[0].text = $"<size=50><sprite name=\"flower_emoji_{flower.index}\"></size>{flowerCounts[flower]}/2  ";
                     break;
                 case 1:
-                    flowerBoards[0].text += $"<sprite name=\"flower_emoji_{flower.index}\">{flowerCounts[flower]}/2";
+                    flowerBoards[0].text += $"<size=50><sprite name=\"flower_emoji_{flower.index}\"></size>{flowerCounts[flower]}/2";
                     break;
                 case 2:
-                    flowerBoards[1].text = $"<sprite name=\"flower_emoji_{flower.index}\">{flowerCounts[flower]}/2    ";
+                    flowerBoards[1].text = $"<size=50><sprite name=\"flower_emoji_{flower.index}\"></size>{flowerCounts[flower]}/2   ";
                     break;
                 case 3:
-                    flowerBoards[1].text += $"<sprite name=\"flower_emoji_{flower.index}\">{flowerCounts[flower]}/2";
+                    flowerBoards[1].text += $"<size=50><sprite name=\"flower_emoji_{flower.index}\"></size>{flowerCounts[flower]}/2";
                     break;
                 case 4:
-                    flowerBoards[2].text = $"<sprite name=\"flower_emoji_{flower.index}\">{flowerCounts[flower]}/2  ";
+                    flowerBoards[2].text = $"<size=50><sprite name=\"flower_emoji_{flower.index}\"></size>{flowerCounts[flower]}/2  ";
                     break;
                 case 5:
-                    flowerBoards[2].text += $"<sprite name=\"flower_emoji_{flower.index}\">{flowerCounts[flower]}/2  ";
+                    flowerBoards[2].text += $"<size=44><sprite name=\"flower_emoji_{flower.index}\"></size>{flowerCounts[flower]}/2  ";
                     break;
                 case 6:
-                    flowerBoards[2].text += $"<sprite name=\"flower_emoji_{flower.index}\">{flowerCounts[flower]}/1";
+                    flowerBoards[2].text += $"<size=44><sprite name=\"flower_emoji_{flower.index}\"></size>{flowerCounts[flower]}/1";
                     break;
                 default:
                     break;
@@ -146,5 +160,7 @@ public class InventoryManager : MonoBehaviour
                 Textchang.text = $"<sprite name={bouquet.emojiIndex}>{(isGiven[bouquet] ? " <color=red>V</color>" : "1/1")}";
             }
         }
+        if (isGiven[bouquetDatas[2]])
+            Ending();
     }
 }

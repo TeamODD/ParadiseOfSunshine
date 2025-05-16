@@ -169,10 +169,10 @@ TextureImporter:
       name: flower_emoji_0
       rect:
         serializedVersion: 2
-        x: 49
-        y: 639
-        width: 242
-        height: 321
+        x: 50
+        y: 710
+        width: 240
+        height: 250
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,10 +191,10 @@ TextureImporter:
       name: flower_emoji_1
       rect:
         serializedVersion: 2
-        x: 392
-        y: 609
-        width: 212
-        height: 350
+        x: 393
+        y: 723
+        width: 210
+        height: 235
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,10 +213,10 @@ TextureImporter:
       name: flower_emoji_2
       rect:
         serializedVersion: 2
-        x: 789
-        y: 729
-        width: 132
-        height: 242
+        x: 790
+        y: 730
+        width: 130
+        height: 240
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -235,10 +235,10 @@ TextureImporter:
       name: flower_emoji_3
       rect:
         serializedVersion: 2
-        x: 1069
-        y: 739
-        width: 232
-        height: 202
+        x: 1071
+        y: 740
+        width: 229
+        height: 200
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,10 +257,10 @@ TextureImporter:
       name: flower_emoji_4
       rect:
         serializedVersion: 2
-        x: 39
-        y: 251
-        width: 272
-        height: 380
+        x: 40
+        y: 370
+        width: 270
+        height: 260
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,10 +279,10 @@ TextureImporter:
       name: flower_emoji_5
       rect:
         serializedVersion: 2
-        x: 439
-        y: 409
-        width: 142
-        height: 192
+        x: 440
+        y: 413
+        width: 140
+        height: 187
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -301,10 +301,10 @@ TextureImporter:
       name: flower_emoji_6
       rect:
         serializedVersion: 2
-        x: 789
-        y: 409
-        width: 132
-        height: 182
+        x: 790
+        y: 410
+        width: 130
+        height: 179
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -324,9 +324,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 110
-        y: 69
-        width: 132
-        height: 162
+        y: 70
+        width: 130
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -345,10 +345,10 @@ TextureImporter:
       name: flower_emoji_8
       rect:
         serializedVersion: 2
-        x: 449
-        y: 69
-        width: 122
-        height: 132
+        x: 450
+        y: 70
+        width: 120
+        height: 130
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -367,10 +367,10 @@ TextureImporter:
       name: flower_emoji_9
       rect:
         serializedVersion: 2
-        x: 799
-        y: 69
-        width: 112
-        height: 162
+        x: 800
+        y: 70
+        width: 110
+        height: 160
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

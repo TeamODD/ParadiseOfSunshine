@@ -29,7 +29,6 @@ public class QuizUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
     public void ShowQuiz(FlowerData data, Flower flower)
     {
@@ -56,6 +55,7 @@ public class QuizUI : MonoBehaviour
             PlayerHappiness.Instance.Heal(5);
         }
         gameObject.SetActive(false);
+        playerMove.Instance.isTalking = false;
         isActive=false;
     }
 }

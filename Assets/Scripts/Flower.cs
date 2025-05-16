@@ -1,6 +1,7 @@
 using NUnit.Framework.Interfaces;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Flower : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class Flower : MonoBehaviour
     }
     public void GetFlower()
     {
+        playerMove.Instance.isTalking = true;
         SelectUI.Instance.ShowSelect(data, this);
     }
     public void ApplyData(FlowerData newData)

@@ -11,28 +11,28 @@ using UnityEngine.UI;
 public class NPCManager : MonoBehaviour
 {
     public GameObject talkPanel;
-    public playerMove player;
     public TextMeshProUGUI text;
+    public TextMeshProUGUI playerText;
     public GameObject playerPanel;
     public List<Button> giveButtons;
     public List<Button> bouquetButtons;
     public NPCData npcData;
     public List<BouquetData> bouquetDatas;
+    public string NotPrepared;
     private int currentIndex;
     private bool finished = false;
     private bool endScript = false;
     private bool isAbleNext = true;
     private bool isPlaying = false;
     private bool isTalking = false;
+    private bool isStart = false;
+    AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         text.text = npcData.scripts[currentIndex];
-        giveButtons[0].onClick.AddListener(() => OnSelected(true));
-        giveButtons[1].onClick.AddListener(() => OnSelected(false));
-        bouquetButtons[0].onClick.AddListener(() => OnGive(0));
-        bouquetButtons[1].onClick.AddListener(() => OnGive(1));
         foreach (var button in giveButtons)
         {
             button.gameObject.SetActive(false);
@@ -52,16 +52,29 @@ public class NPCManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.isTalking && isTalking)
+        if (playerMove.Instance.isTalking && isTalking)
         {
-            if(endScript)
+            if (isStart) {
+                giveButtons[0].onClick.AddListener(() => OnSelected(true));
+                giveButtons[1].onClick.AddListener(() => OnSelected(false));
+                bouquetButtons[0].onClick.AddListener(() => OnGive(0));
+                bouquetButtons[1].onClick.AddListener(() => OnGive(1));
+                if(npcData.Name == "여우")
+                {
+                    giveButtons[0].onClick.AddListener(() => OnGive(2));
+                    giveButtons[1].onClick.AddListener(() => OnSelected(false));
+                }
+                isStart = false;
+            }
+            if (endScript)
             {
                 if (Input.GetMouseButtonDown(0))
                 {
+                    RemoveListens();
                     currentIndex = 0;
                     playerPanel.SetActive(false);
                     talkPanel.SetActive(false);
-                    player.isTalking = false;
+                    playerMove.Instance.isTalking = false;
                     finished = true;
                     endScript = false;
                     isPlaying = false;
@@ -73,7 +86,7 @@ public class NPCManager : MonoBehaviour
                 if (Input.GetMouseButtonDown(0) && isAbleNext)
                 {
                     talkPanel.SetActive(false);
-                    player.isTalking = false;
+                    playerMove.Instance.isTalking = false;
                     isTalking = false;
                 }
                 else if (Input.GetMouseButtonDown(0) && !isAbleNext)
@@ -86,15 +99,20 @@ public class NPCManager : MonoBehaviour
                 if (currentIndex <= 1)
                 {
                     text.text = npcData.scripts[currentIndex];
+                    //Debug.Log(playerMove.Instance.isTalking && isTalking);
+                    //Debug.Log(isAbleNext);
                     if (Input.GetMouseButtonDown(0) && isAbleNext)
                     {
+                        //Debug.Log("클릭");
                         currentIndex++;
                         StartCoroutine(Wait());
                     }
+                    //if(Input.GetMouseButtonDown(0) && isAbleNext)
                 }
                 else if (!isPlaying)
                 {
                     talkPanel.SetActive(false);
+                    playerPanel.transform.GetChild(0).transform.GetChild(0).gameObject.SetActive(false);
                     playerPanel.SetActive(true);
                     isPlaying = true;
                     if (InventoryManager.Instance.isAble[bouquetDatas[0]] || InventoryManager.Instance.isAble[bouquetDatas[1]])
@@ -106,8 +124,9 @@ public class NPCManager : MonoBehaviour
                     }
                     else
                     {
+                        RemoveListens();
                         playerPanel.SetActive(false);
-                        player.isTalking = false;
+                        playerMove.Instance.isTalking = false;
                         currentIndex = 0;
                         isPlaying = false;
                         isTalking = false;
@@ -120,13 +139,17 @@ public class NPCManager : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (player.isTalking)
+        if (playerMove.Instance.isTalking)
+        {
             return;
+        }
         currentIndex = 0;
         talkPanel.SetActive(true);
-        player.isTalking = true;
-        StartCoroutine(Wait());
+        playerMove.Instance.isTalking = true;
         isTalking = true;
+        isStart = true;
+        isAbleNext = false;
+        StartCoroutine(Wait());
     }
     private void OnSelected(bool isGive)
     {
@@ -139,7 +162,8 @@ public class NPCManager : MonoBehaviour
             foreach (var button in bouquetButtons)
             {
                 button.gameObject.SetActive(true);
-                if (InventoryManager.Instance.isAble[bouquetDatas[bouquetButtons.IndexOf(button)]])
+                if (InventoryManager.Instance.isAble[bouquetDatas[bouquetButtons.IndexOf(button)]] && 
+                    !(InventoryManager.Instance.isGiven[bouquetDatas[bouquetButtons.IndexOf(button)]]))
                     button.interactable = true;
                 else
                     button.interactable = false;
@@ -147,10 +171,12 @@ public class NPCManager : MonoBehaviour
         }
         else
         {
-            player.isTalking = false;
+            RemoveListens();
+            playerMove.Instance.isTalking = false;
             playerPanel.SetActive(false);
             currentIndex = 0;
             isTalking= false;
+            isPlaying = false;
         }
     }
     private void OnGive(int index)
@@ -159,20 +185,55 @@ public class NPCManager : MonoBehaviour
         {
             button.gameObject.SetActive(false);
         }
+        if (index == 2)
+        {
+            if (!InventoryManager.Instance.isAble[bouquetDatas[index]])
+            {
+                playerText.text = NotPrepared;
+                playerText.gameObject.SetActive(true);
+                playerPanel.SetActive(true);
+                StartCoroutine(Waitlong());
+                OnSelected(false);
+                return;
+            }
+        }
         playerPanel.SetActive(false);
         talkPanel.SetActive(true);
-        playerPanel.SetActive(false);
         if (npcData.favoriteBouquet == index)
+        {
+            PlayerHappiness.Instance.Heal(20);
             text.text = npcData.selectScripts[0];
+        }
         else
+        {
+            PlayerHappiness.Instance.Heal(10);
             text.text = npcData.selectScripts[1];
+        }
+        audioSource.Play();
         endScript = true;
         InventoryManager.Instance.giveBouquet(bouquetDatas[index]);
+    }
+    private void RemoveListens()
+    {
+        foreach (var button in giveButtons)
+        {
+            button.onClick.RemoveAllListeners();
+        }
+        foreach (var button in bouquetButtons)
+        {
+            button.onClick.RemoveAllListeners();
+        }
     }
     IEnumerator Wait()
     {
         isAbleNext = false;
         yield return new WaitForSeconds(0.2f);
+        isAbleNext = true;
+    }
+    IEnumerator Waitlong()
+    {
+        isAbleNext = false;
+        yield return new WaitForSeconds(2f);
         isAbleNext = true;
     }
 }
