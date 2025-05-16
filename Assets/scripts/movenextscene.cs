@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
@@ -6,6 +7,8 @@ public class movenextscene : MonoBehaviour
 {
     public PlayableDirector director;
     public string nextSceneName;
+    public GameObject panel;
+    public TextMeshProUGUI text;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,5 +26,11 @@ public class movenextscene : MonoBehaviour
     {
         director.Stop();
         SceneManager.LoadScene("playertestFlower");
+    }
+    public void EndingScene()
+    {
+        if(PlayerHappiness.Instance != null)
+            text.text += PlayerHappiness.Instance.currentHappy * 100;
+        panel.SetActive(true);
     }
 }
