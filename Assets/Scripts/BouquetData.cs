@@ -7,6 +7,6 @@ public class BouquetData : ScriptableObject
     public string bouquetName;
     public List<FlowerData> needFlowers;
     public List<int> needCounts;
-    public int emojiIndex;
+    public string emojiIndex;
     public Sprite image;
 }

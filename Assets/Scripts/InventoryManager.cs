@@ -44,7 +44,7 @@ public class InventoryManager : MonoBehaviour
         }
         foreach(BouquetData data1 in bouquetDatas)
         {
-            isAble[data1] = true;
+            isAble[data1] = false;
             isGiven[data1] = false;
         }
         UpdateSlot();
@@ -127,25 +127,25 @@ public class InventoryManager : MonoBehaviour
             switch(flower.index)
             {
                 case 0:
-                    flowerBoards[0].text = $"<size=50><sprite={flower.index}\"></size>{flowerCounts[flower]}/2  ";
+                    flowerBoards[0].text = $"<size=50><sprite name=\"flower_emoji_{flower.index}\"></size>{flowerCounts[flower]}/2  ";
                     break;
                 case 1:
-                    flowerBoards[0].text += $"<size=50><sprite={flower.index}\"></size>{flowerCounts[flower]}/2";
+                    flowerBoards[0].text += $"<size=50><sprite name=\"flower_emoji_{flower.index}\"></size>{flowerCounts[flower]}/2";
                     break;
                 case 2:
-                    flowerBoards[1].text = $"<size=50><sprite={flower.index}\"></size>{flowerCounts[flower]}/2   ";
+                    flowerBoards[1].text = $"<size=50><sprite name=\"flower_emoji_{flower.index}\"></size>{flowerCounts[flower]}/2   ";
                     break;
                 case 3:
-                    flowerBoards[1].text += $"<size=50><sprite={flower.index}\"></size>{flowerCounts[flower]}/2";
+                    flowerBoards[1].text += $"<size=50><sprite name=\"flower_emoji_{flower.index}\"></size>{flowerCounts[flower]}/2";
                     break;
                 case 4:
-                    flowerBoards[2].text = $"<size=50><sprite={flower.index}\"></size>{flowerCounts[flower]}/2  ";
+                    flowerBoards[2].text = $"<size=50><sprite name=\"flower_emoji_{flower.index}\"></size>{flowerCounts[flower]}/2  ";
                     break;
                 case 5:
-                    flowerBoards[2].text += $"<size=44><sprite={flower.index}\"></size>{flowerCounts[flower]}/2  ";
+                    flowerBoards[2].text += $"<size=44><sprite name=\"flower_emoji_{flower.index}\"></size>{flowerCounts[flower]}/2  ";
                     break;
                 case 6:
-                    flowerBoards[2].text += $"<size=44><sprite={flower.index}\"></size>{flowerCounts[flower]}/1";
+                    flowerBoards[2].text += $"<size=44><sprite name=\"flower_emoji_{flower.index}\"></size>{flowerCounts[flower]}/1";
                     break;
                 default:
                     break;
@@ -157,7 +157,7 @@ public class InventoryManager : MonoBehaviour
             if (isAble[bouquet])
             {
                 TextMeshProUGUI Textchang = flowerBoards[bouquetDatas.IndexOf(bouquet)];
-                Textchang.text = $"<sprite={bouquet.emojiIndex}>{(isGiven[bouquet] ? " <sprite=10>" : "1/1")}";
+                Textchang.text = $"<sprite name={bouquet.emojiIndex}>{(isGiven[bouquet] ? " <color=red>V</color>" : "1/1")}";
             }
         }
         if (isGiven[bouquetDatas[2]])
