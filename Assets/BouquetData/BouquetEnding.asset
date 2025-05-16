@@ -18,5 +18,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 046ab94d192fdd240933e77f7d08bf02, type: 2}
   - {fileID: 11400000, guid: 9c42e306f47db88438080bffe35ddbd6, type: 2}
   needCounts: 020000000200000001000000
-  emojiIndex: flower_emoji_9
+  emojiIndex: 9
   image: {fileID: -5109248459372247411, guid: 014fea42f33772a4a81af7113f734608, type: 3}
