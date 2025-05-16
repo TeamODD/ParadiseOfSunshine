@@ -44,7 +44,10 @@ public class playerMove : MonoBehaviour
     private void FixedUpdate()
     {
         if (isTalking)
+        {
+            animator.SetInteger("direction", 0);
             return;
+        }
         //방향 상하좌우 2143
         if (moveInput.y > 0)
             animator.SetInteger("direction", 2);
