@@ -85,7 +85,7 @@ public class InventoryManager : MonoBehaviour
     {
         //엔딩 씬 이동, 점수계산
         DontDestroyOnLoad(PlayerHappiness.Instance);
-        //SceneManager.LoadScene();
+        SceneManager.LoadScene("EndScene");
         return;
     }
     private void ToEnough(FlowerData flowerData)

@@ -6194,7 +6194,7 @@ MonoBehaviour:
   - {fileID: 1087241360}
   spawnMariPoint: {fileID: 521285517}
   startFlower: {fileID: 1645864368}
-  cooltime: 30
+  cooltime: 20
 --- !u!224 &1037793683 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1827197765757507535, guid: ef621823fa8fe784eb1cd6b72cb282d7, type: 3}
@@ -7914,11 +7914,19 @@ PrefabInstance:
       objectReference: {fileID: 111321988}
     - target: {fileID: 6358051779028483381, guid: ff3963e2c26648b4b9afcc3f484cd78c, type: 3}
       propertyPath: m_Size.x
-      value: 3.22
+      value: 1.8937781
       objectReference: {fileID: 0}
     - target: {fileID: 6358051779028483381, guid: ff3963e2c26648b4b9afcc3f484cd78c, type: 3}
       propertyPath: m_Size.y
-      value: 5.02
+      value: 1.7569261
+      objectReference: {fileID: 0}
+    - target: {fileID: 6358051779028483381, guid: ff3963e2c26648b4b9afcc3f484cd78c, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.6631111
+      objectReference: {fileID: 0}
+    - target: {fileID: 6358051779028483381, guid: ff3963e2c26648b4b9afcc3f484cd78c, type: 3}
+      propertyPath: m_Offset.y
+      value: -1.6315372
       objectReference: {fileID: 0}
     - target: {fileID: 6358051779028483381, guid: ff3963e2c26648b4b9afcc3f484cd78c, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -11828,7 +11836,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4278190080
   m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -12206,7 +12214,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6358051779028483381, guid: ff3963e2c26648b4b9afcc3f484cd78c, type: 3}
       propertyPath: m_Size.y
-      value: 5.02
+      value: 2.5782328
+      objectReference: {fileID: 0}
+    - target: {fileID: 6358051779028483381, guid: ff3963e2c26648b4b9afcc3f484cd78c, type: 3}
+      propertyPath: m_Offset.y
+      value: -1.2208834
       objectReference: {fileID: 0}
     - target: {fileID: 6358051779028483381, guid: ff3963e2c26648b4b9afcc3f484cd78c, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
@@ -13375,6 +13387,14 @@ PrefabInstance:
       propertyPath: playerPanel
       value: 
       objectReference: {fileID: 111321988}
+    - target: {fileID: 6358051779028483381, guid: ff3963e2c26648b4b9afcc3f484cd78c, type: 3}
+      propertyPath: m_Size.y
+      value: 2.5776863
+      objectReference: {fileID: 0}
+    - target: {fileID: 6358051779028483381, guid: ff3963e2c26648b4b9afcc3f484cd78c, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.97115713
+      objectReference: {fileID: 0}
     - target: {fileID: 7454673085824573384, guid: ff3963e2c26648b4b9afcc3f484cd78c, type: 3}
       propertyPath: m_Name
       value: NPC1

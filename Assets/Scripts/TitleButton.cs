@@ -17,6 +17,6 @@ public class TitleButton : MonoBehaviour
     public void OnStart()
     {
         //인트로 씬 이름
-        //SceneManager.LoadScene("");
+        SceneManager.LoadScene("IntroScene");
     }
 }
