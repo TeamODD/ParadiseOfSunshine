@@ -55,6 +55,7 @@ public class QuizUI : MonoBehaviour
             PlayerHappiness.Instance.Heal(5);
         }
         gameObject.SetActive(false);
+        playerMove.Instance.isTalking = false;
         isActive=false;
     }
 }

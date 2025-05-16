@@ -120,7 +120,7 @@ public class InventoryManager : MonoBehaviour
     }
     void UpdateSlot()
     {
-        foreach(var flower in flowerDatas)
+        foreach (var flower in flowerDatas)
         {
             switch(flower.index)
             {

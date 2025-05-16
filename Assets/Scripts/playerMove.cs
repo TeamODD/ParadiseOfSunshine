@@ -3,7 +3,6 @@ using UnityEngine;
 public class playerMove : MonoBehaviour
 {
     public static playerMove Instance;
-    public GameObject mapObject;
     private InputSystem_Actions controls;
     Rigidbody2D rb;
     Animator animator;
@@ -15,6 +14,7 @@ public class playerMove : MonoBehaviour
 
     public bool isTalking;
     public bool isTuto = true;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -81,4 +81,5 @@ public class playerMove : MonoBehaviour
             }
         }
     }
+
 }

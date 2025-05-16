@@ -12,11 +12,13 @@ public class NPCManager : MonoBehaviour
 {
     public GameObject talkPanel;
     public TextMeshProUGUI text;
+    public TextMeshProUGUI playerText;
     public GameObject playerPanel;
     public List<Button> giveButtons;
     public List<Button> bouquetButtons;
     public NPCData npcData;
     public List<BouquetData> bouquetDatas;
+    public string NotPrepared;
     private int currentIndex;
     private bool finished = false;
     private bool endScript = false;
@@ -183,9 +185,20 @@ public class NPCManager : MonoBehaviour
         {
             button.gameObject.SetActive(false);
         }
+        if (index == 2)
+        {
+            if (!InventoryManager.Instance.isAble[bouquetDatas[index]])
+            {
+                playerText.text = NotPrepared;
+                playerText.gameObject.SetActive(true);
+                playerPanel.SetActive(true);
+                StartCoroutine(Waitlong());
+                OnSelected(false);
+                return;
+            }
+        }
         playerPanel.SetActive(false);
         talkPanel.SetActive(true);
-        playerPanel.SetActive(false);
         if (npcData.favoriteBouquet == index)
         {
             PlayerHappiness.Instance.Heal(20);
@@ -215,6 +228,12 @@ public class NPCManager : MonoBehaviour
     {
         isAbleNext = false;
         yield return new WaitForSeconds(0.2f);
+        isAbleNext = true;
+    }
+    IEnumerator Waitlong()
+    {
+        isAbleNext = false;
+        yield return new WaitForSeconds(2f);
         isAbleNext = true;
     }
 }

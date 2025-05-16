@@ -69,7 +69,7 @@ public class NPCRabbit : MonoBehaviour
                 else if(moveIndex >= waypoints.Length)
                 {
                     animator.SetBool("isWalking", false);
-                    if(Vector3.Distance(transform.position, playerMove.Instance.gameObject.transform.position) < 350f)
+                    if(Vector3.Distance(transform.position, playerMove.Instance.gameObject.transform.position) < 420f)
                         StartTalk();
                 }
             }
@@ -79,19 +79,21 @@ public class NPCRabbit : MonoBehaviour
                 StopTalk();
                 if (SelectUI.Instance.isActive)
                 {
+                    SelectUI.Instance.buttons[1].interactable = false;
                     StartTalk();
                 }
             }
-            //²É Ã¬±â±â
+            //²É Ã¬±â±â ÈÄ ÄûÁî
             if (currentIndex == 12)
             {
                 StopTalk();
                 if (!(SelectUI.Instance.isActive))
                 {
+                    SelectUI.Instance.buttons[1].interactable = true;
                     StartTalk();
                 }
             }
-            //ÄûÁî
+            //ÄûÁî ³¡
             if (currentIndex == 14)
             {
                 StopTalk();
@@ -107,7 +109,6 @@ public class NPCRabbit : MonoBehaviour
                 {
                     npc.SetActive(true);
                 }
-                Debug.Log("Æ©Åä³¡");
             }
             if (playerMove.Instance.isTalking && !finished && isTalking)
             {
