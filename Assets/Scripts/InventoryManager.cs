@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -80,10 +81,11 @@ public class InventoryManager : MonoBehaviour
         isGiven[bouquetData] = true;
         UpdateSlot();
     }
-    public void Ending(int score)
+    public void Ending()
     {
-        Debug.Log("엔딩");
         //엔딩 씬 이동, 점수계산
+        DontDestroyOnLoad(PlayerHappiness.Instance);
+        //SceneManager.LoadScene();
         return;
     }
     private void ToEnough(FlowerData flowerData)
@@ -159,6 +161,6 @@ public class InventoryManager : MonoBehaviour
             }
         }
         if (isGiven[bouquetDatas[2]])
-            Ending(PlayerHappiness.Instance.currentHappy);
+            Ending();
     }
 }
