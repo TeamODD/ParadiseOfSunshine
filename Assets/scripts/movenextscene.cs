@@ -9,14 +9,19 @@ public class movenextscene : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        director.stopped += OncutsceneFinished;
+       // director.stopped += OncutsceneFinished;
 
     }
 
     // Update is called once per frame
 
-    void OncutsceneFinished(PlayableDirector pd)
+    //void OncutsceneFinished(PlayableDirector pd)
+    //{
+    //    SceneManager.LoadScene(nextSceneName);
+    //}
+    public void NextScene()
     {
-        SceneManager.LoadScene(nextSceneName);
+        director.Stop();
+        SceneManager.LoadScene("playertestFlower");
     }
 }
