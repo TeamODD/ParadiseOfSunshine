@@ -65,6 +65,8 @@ public class InventoryManager : MonoBehaviour
             isAble[data1] = false;
             isGiven[data1] = false;
         }
+        //isAble[bouquetDatas[0]] = true;
+
         UpdateSlot();
     }
     public void AddFlower(FlowerData flowerData)

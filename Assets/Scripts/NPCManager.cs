@@ -83,15 +83,12 @@ public class NPCManager : MonoBehaviour
             }
             if(finished)
             {
+                StartCoroutine(Wait());
                 if (Input.GetMouseButtonDown(0) && isAbleNext)
                 {
                     talkPanel.SetActive(false);
                     playerMove.Instance.isTalking = false;
                     isTalking = false;
-                }
-                else if (Input.GetMouseButtonDown(0) && !isAbleNext)
-                {
-                    isAbleNext = true;
                 }
             }
             else
@@ -118,6 +115,23 @@ public class NPCManager : MonoBehaviour
                     isPlaying = true;
                     if (InventoryManager.Instance.isAble[bouquetDatas[0]] || InventoryManager.Instance.isAble[bouquetDatas[1]])
                     {
+                        int i = 0, j = 0;
+                        foreach (var data in InventoryManager.Instance.bouquetDatas)
+                        {
+                            if (InventoryManager.Instance.isAble[data])
+                                i++;
+                            if (InventoryManager.Instance.isGiven[data])
+                                j++;
+                        }
+                        if (i == j)
+                        {
+                            RemoveListens();
+                            playerPanel.SetActive(false);
+                            playerMove.Instance.isTalking = false;
+                            currentIndex = 0;
+                            isPlaying = false;
+                            isTalking = false;
+                        }
                         foreach (var button in giveButtons)
                         {
                             button.gameObject.SetActive(true);
@@ -248,7 +262,7 @@ public class NPCManager : MonoBehaviour
     IEnumerator Waitlong()
     {
         isLong = false;
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSecondsRealtime(0.2f);
         isLong = true;
     }
 }
