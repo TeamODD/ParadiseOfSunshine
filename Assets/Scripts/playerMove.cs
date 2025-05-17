@@ -46,7 +46,6 @@ public class playerMove : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Debug.Log(isTalking);
         if (isTalking)
         {
             animator.SetInteger("direction", 0);
