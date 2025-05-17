@@ -11,6 +11,7 @@ public class SelectUI : MonoBehaviour
     private Flower currentFlower;
     private FlowerData currentFlowerData;
     public List<Button> buttons;
+    public AudioSource AudioSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -30,6 +31,7 @@ public class SelectUI : MonoBehaviour
     }
     public void ShowSelect(FlowerData data, Flower flower)
     {
+        AudioSource.Play();
         isActive = true;
         currentFlowerData = data;
         currentFlower = flower;
@@ -42,6 +44,7 @@ public class SelectUI : MonoBehaviour
 
     void OnGetSelected(bool isGet, FlowerData flowerData, Flower flower)
     {
+        AudioSource.Play();
         if (isGet)
         {
             if (flower.isPoison)

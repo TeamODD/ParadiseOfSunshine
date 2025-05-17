@@ -25,6 +25,7 @@ public class NPCManager : MonoBehaviour
     private bool isStart = false;
     private bool isLong = false;
     AudioSource audioSource;
+    public AudioSource ClickSound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -68,6 +69,7 @@ public class NPCManager : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
+                    ClickSound.Play();
                     RemoveListens();
                     currentIndex = 0;
                     playerPanel.SetActive(false);
@@ -101,6 +103,7 @@ public class NPCManager : MonoBehaviour
                     //Debug.Log(isAbleNext);
                     if (Input.GetMouseButtonDown(0) && isAbleNext)
                     {
+                        ClickSound.Play();
                         //Debug.Log("Å¬¸¯");
                         currentIndex++;
                         StartCoroutine(Wait());
@@ -150,6 +153,7 @@ public class NPCManager : MonoBehaviour
             return;
         }
         currentIndex = 0;
+        ClickSound.Play();
         talkPanel.SetActive(true);
         playerMove.Instance.isTalking = true;
         isTalking = true;
@@ -159,6 +163,7 @@ public class NPCManager : MonoBehaviour
     }
     private void OnSelected(bool isGive)
     {
+        ClickSound.Play();
         if(isGive)
         {
             foreach(var button in giveButtons)

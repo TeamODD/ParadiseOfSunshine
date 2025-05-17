@@ -10,6 +10,7 @@ public class QuizUI : MonoBehaviour
 
     public List<Button> choiceButtons;
     public List<TextMeshProUGUI> choiceTexts;
+    public AudioSource AudioSource;
 
     private FlowerData currentFlowerData;
     private Flower currentFlower;
@@ -49,6 +50,7 @@ public class QuizUI : MonoBehaviour
 
     void OnAnswerSelected(int index)
     {
+        AudioSource.Play();
         bool isCorrect = (index == currentFlowerData.correctAnswerIndex);
 
         if (isCorrect)

@@ -12,9 +12,11 @@ public class PageButton : MonoBehaviour
     public Transform pageParent;
     
     bool isOpened = false;
+    AudioSource audioSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         originalScale = new Vector3(1, 1, 1);
         bigScale = new Vector3(upRange, upRange, 1);   
     }
@@ -44,6 +46,7 @@ public class PageButton : MonoBehaviour
     }
     public void OnPointerClick()
     {
+        audioSource.Play();
         SetPage(transform.GetSiblingIndex());
     }
     // Update is called once per frame
