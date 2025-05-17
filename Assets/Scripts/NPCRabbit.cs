@@ -18,6 +18,7 @@ public class NPCRabbit : MonoBehaviour
     public GameObject startFlower;
     public Transform[] waypoints;
     public float speed = 10f;
+    public AudioSource ClickSound;
 
     private int currentIndex = 0;
     private int nextPlayerTalk = 0;
@@ -28,6 +29,7 @@ public class NPCRabbit : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        startFlower.SetActive(false);
         animator = GetComponent<Animator>();
         talkPanel.SetActive(false);
         playerPanel.SetActive(false);
@@ -69,7 +71,10 @@ public class NPCRabbit : MonoBehaviour
                 {
                     animator.SetBool("isWalking", false);
                     if(Vector3.Distance(transform.position, playerMove.Instance.gameObject.transform.position) < 420f)
+                    {
+                        startFlower.SetActive(true);
                         StartTalk();
+                    }
                 }
             }
             //²É È¹µæ Àå¸é
@@ -129,6 +134,7 @@ public class NPCRabbit : MonoBehaviour
                 {
                     if (currentIndex < scripts.Count)
                     {
+                        ClickSound.Play();
                         currentIndex++;
                         StartCoroutine(Wait());
                     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -26,8 +27,11 @@ public class InventoryManager : MonoBehaviour
     public TextMeshProUGUI[] flowerBoards;
 
     new AudioSource audio;
+    public AudioSource backgroundSound;
+    public Image fade;
     public List<AudioClip> audioClips;
     bool isPlaying = false;
+    int i = 0;
 
     //private Dictionary<FlowerData, GameObject> flowerSlots = new Dictionary<FlowerData, GameObject>();
 
@@ -45,6 +49,7 @@ public class InventoryManager : MonoBehaviour
             if(Input.GetMouseButtonDown(0))
             {
                 StartCoroutine(PlayEndScene());
+                isPlaying = false;
             }
         }
     }
@@ -60,6 +65,8 @@ public class InventoryManager : MonoBehaviour
             isAble[data1] = false;
             isGiven[data1] = false;
         }
+        //isAble[bouquetDatas[0]] = true;
+
         UpdateSlot();
     }
     public void AddFlower(FlowerData flowerData)
@@ -177,7 +184,14 @@ public class InventoryManager : MonoBehaviour
     }
     IEnumerator PlayEndScene()
     {
-        yield return new WaitForSeconds(0.5f);
+        Color color = fade.color;
+        for(i=0;i<20;i++)
+        {
+            color.a += 0.05f;
+            fade.color = color;
+            backgroundSound.volume -= 0.05f;
+            yield return new WaitForSeconds(0.1f);
+        }
         DontDestroyOnLoad(PlayerHappiness.Instance);
         SceneManager.LoadScene("EndScene");
     }
