@@ -1,7 +1,4 @@
-using NUnit.Framework.Interfaces;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Flower : MonoBehaviour
 {

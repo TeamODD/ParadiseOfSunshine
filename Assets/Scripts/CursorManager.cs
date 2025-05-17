@@ -22,7 +22,7 @@ public class FakeCursor : MonoBehaviour
         bool isHovering = false;
 
         // 1. UI 위에 있는지 확인
-        if (EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current.IsPointerOverGameObject(-1))
         {
             isHovering = true;
         }
