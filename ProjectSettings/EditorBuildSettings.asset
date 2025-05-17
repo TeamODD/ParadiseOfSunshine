@@ -14,9 +14,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/playertestFlower.unity
     guid: 9519a582db351124abceed406daa9bb0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/playertestFlower 1.unity
     guid: 7d007d7c4a0980c42b4c6e96770847d4
+  - enabled: 1
+    path: Assets/Scenes/playertestFlower 2.unity
+    guid: a5cc791fdc6f17542b688109d27b6713
   - enabled: 0
     path: Assets/Scenes/None.unity
     guid: 4167a3c69fc8c5c458124d0d6a45b38b
