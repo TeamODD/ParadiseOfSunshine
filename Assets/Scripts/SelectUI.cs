@@ -52,11 +52,8 @@ public class SelectUI : MonoBehaviour
                 QuizUI.Instance.ShowQuiz(flowerData, flower);
             }
         }
-        else
-        {
-            playerMove.Instance.isTalking = false;
-        }
         gameObject.SetActive(false);
+        playerMove.Instance.isTalking = false;
         isActive = false;
         flowerSpawner.Instance.NotifyNull(currentFlower.transform.parent);
         Destroy(currentFlower.gameObject);
