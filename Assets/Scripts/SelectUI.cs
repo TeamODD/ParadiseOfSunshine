@@ -46,6 +46,7 @@ public class SelectUI : MonoBehaviour
             if (flower.isPoison)
             {
                 PlayerHappiness.Instance.Damage(5);
+                playerMove.Instance.isTalking = false;
             }
             else
             {
