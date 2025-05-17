@@ -83,8 +83,7 @@ public class NPCManager : MonoBehaviour
             }
             if(finished)
             {
-                StartCoroutine(Wait());
-                if (Input.GetMouseButtonDown(0) && isAbleNext)
+                if (Input.GetMouseButtonDown(0))
                 {
                     talkPanel.SetActive(false);
                     playerMove.Instance.isTalking = false;
