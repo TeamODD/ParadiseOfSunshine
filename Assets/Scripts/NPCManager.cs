@@ -218,7 +218,10 @@ public class NPCManager : MonoBehaviour
         endScript = true;
         InventoryManager.Instance.giveBouquet(bouquetDatas[index]);
         if (InventoryManager.Instance.isGiven[bouquetDatas[0]] && InventoryManager.Instance.isGiven[bouquetDatas[1]] && index < 2)
+        {
+            text.text += "\n";
             text.text += MariEx;
+        }
     }
     private void RemoveListens()
     {
