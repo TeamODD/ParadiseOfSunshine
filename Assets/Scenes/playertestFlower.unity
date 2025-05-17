@@ -7185,7 +7185,7 @@ GameObject:
   - component: {fileID: 1102141757}
   - component: {fileID: 1102141756}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Fadeout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8805,7 +8805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7454673085824573384, guid: ff3963e2c26648b4b9afcc3f484cd78c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7454673085824573384, guid: ff3963e2c26648b4b9afcc3f484cd78c, type: 3}
       propertyPath: m_TagString
@@ -11675,7 +11675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7454673085824573384, guid: ff3963e2c26648b4b9afcc3f484cd78c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7809033234435134278, guid: ff3963e2c26648b4b9afcc3f484cd78c, type: 3}
       propertyPath: m_Sprite
@@ -12066,7 +12066,7 @@ MonoBehaviour:
   - {fileID: 1734726543}
   - {fileID: 1947981194}
   backgroundSound: {fileID: 1854811622}
-  fade: {fileID: 187196749}
+  fade: {fileID: 187196748}
   audioClips:
   - {fileID: 8300000, guid: ddfb1f17952c7894e8a709a65c4f6afa, type: 3}
   - {fileID: 8300000, guid: 27a0b03be6e9c6348b179aa5e71a62da, type: 3}
@@ -14413,7 +14413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7454673085824573384, guid: ff3963e2c26648b4b9afcc3f484cd78c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7454673085824573384, guid: ff3963e2c26648b4b9afcc3f484cd78c, type: 3}
       propertyPath: m_TagString
