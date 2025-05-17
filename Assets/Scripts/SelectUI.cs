@@ -25,7 +25,8 @@ public class SelectUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(isActive)
+            playerMove.Instance.isTalking = true;
     }
     public void ShowSelect(FlowerData data, Flower flower)
     {

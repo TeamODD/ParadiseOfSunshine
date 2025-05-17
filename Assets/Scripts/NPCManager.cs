@@ -1,11 +1,7 @@
-using JetBrains.Annotations;
-using NUnit.Framework;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem.Editor;
 using UnityEngine.UI;
 
 public class NPCManager : MonoBehaviour

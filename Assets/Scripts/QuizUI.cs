@@ -29,6 +29,8 @@ public class QuizUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isActive)
+            playerMove.Instance.isTalking = true;
     }
     public void ShowQuiz(FlowerData data, Flower flower)
     {
