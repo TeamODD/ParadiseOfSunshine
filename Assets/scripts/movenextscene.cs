@@ -25,7 +25,7 @@ public class movenextscene : MonoBehaviour
     public void NextScene()
     {
         director.Stop();
-        SceneManager.LoadScene("playertestFlower");
+        SceneManager.LoadScene("playertestFlower 1");
     }
     public void EndingScene()
     {
