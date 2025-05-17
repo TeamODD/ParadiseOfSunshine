@@ -65,8 +65,6 @@ public class InventoryManager : MonoBehaviour
             isAble[data1] = false;
             isGiven[data1] = false;
         }
-        //isAble[bouquetDatas[0]] = true;
-
         UpdateSlot();
     }
     public void AddFlower(FlowerData flowerData)
@@ -190,7 +188,7 @@ public class InventoryManager : MonoBehaviour
             color.a += 0.05f;
             fade.color = color;
             backgroundSound.volume -= 0.05f;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.15f);
         }
         DontDestroyOnLoad(PlayerHappiness.Instance);
         SceneManager.LoadScene("EndScene");
